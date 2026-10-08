@@ -5,14 +5,14 @@ import { env } from "./env.js";
 
 const app = Fastify({
   logger: true,
-  // Limita el tamaño del body para evitar abusos (100 KB)
+  // Cap the request body size to prevent abuse (100 KB)
   bodyLimit: 100 * 1024,
 });
 
-// Cabeceras de seguridad HTTP
+// HTTP security headers
 await app.register(helmet);
 
-// Solo el frontend puede llamar a la API desde el navegador
+// Only the frontend may call the API from the browser
 await app.register(cors, {
   origin: env.FRONTEND_ORIGIN,
   credentials: true,

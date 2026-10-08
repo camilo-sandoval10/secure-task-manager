@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Full-stack task manager whose explicit goal is to be built with good security practices. The project is at the initial-scaffold stage: the backend only exposes `GET /health`, the frontend is still the Vite template, and nothing connects to PostgreSQL yet. The security checklist in `README.md` is the roadmap (the open items are argon2 passwords, `httpOnly`/`Secure`/`SameSite` session cookies, Zod validation on every endpoint, per-user authorization on every resource, and login rate limiting). Tick items off there as they are implemented.
 
-Code comments, README, and user-facing messages are in Spanish. Keep that convention.
+Everything in the repository is written in English: code, comments, README, commit messages, and user-facing messages. Keep that convention.
 
 ## Layout
 
@@ -51,5 +51,5 @@ No test framework is configured yet in either package.
 
 ## Rules
 
-- **No `any`** and **No `unknown`** and validate it with Zod before using it.
-- Explain me each important function or change, mainly in the backend because im not familiar with Fastify and Zod. I want to understand the code, not just have it written for me.
+- **No `any` and no `unknown`** anywhere in the code. External data (request body, params, query) gets its types from Zod schemas through a Fastify Zod type provider, never from hand-written types.
+- Explain every important function or change, especially in the backend: the user is not yet familiar with Fastify and Zod and wants to understand the code, not just have it written for them.

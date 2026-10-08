@@ -6,7 +6,7 @@ dist/
 build/
 coverage/
 
-# Variables de entorno (NUNCA subir secretos)
+# Environment variables (NEVER commit secrets)
 .env
 .env.*
 !.env.example

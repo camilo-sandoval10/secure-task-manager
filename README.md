@@ -1,34 +1,34 @@
 # Secure Task Manager
 
-Gestor de tareas full-stack construido con buenas prácticas de seguridad.
+Full-stack task manager built with security best practices.
 
 ## Stack
 
-| Capa | Tecnología |
+| Layer | Technology |
 |---|---|
 | Frontend | React + Vite + TypeScript |
 | Backend | Node.js + Fastify + TypeScript + Zod |
-| Base de datos | PostgreSQL (Docker) |
+| Database | PostgreSQL (Docker) |
 
-## Estructura
+## Structure
 
 ```
 secure-task-manager/
 ├── frontend/          → React + Vite + TypeScript
-├── backend/           → API con Fastify
+├── backend/           → Fastify API
 └── docker-compose.yml → PostgreSQL
 ```
 
-## Puesta en marcha
+## Getting started
 
-Requisitos: Node.js 22+ y Docker.
+Requirements: Node.js 22+ and Docker.
 
 ```bash
-# 1. Variables de entorno
+# 1. Environment variables
 cp .env.example .env
 cp backend/.env.example backend/.env
 
-# 2. Base de datos
+# 2. Database
 docker compose up -d
 
 # 3. Backend (http://localhost:3000)
@@ -42,13 +42,13 @@ npm install
 npm run dev
 ```
 
-## Seguridad
+## Security
 
-- [x] Secretos en variables de entorno, validadas al arrancar
-- [x] Cabeceras de seguridad (Helmet) y CORS restringido al frontend
-- [x] PostgreSQL expuesto solo en localhost
-- [ ] Contraseñas con argon2
-- [ ] Sesiones en cookies `httpOnly` / `Secure` / `SameSite`
-- [ ] Validación de entrada con Zod en todos los endpoints
-- [ ] Autorización por usuario en cada recurso
-- [ ] Rate limiting en login
+- [x] Secrets in environment variables, validated at startup
+- [x] Security headers (Helmet) and CORS restricted to the frontend
+- [x] PostgreSQL exposed on localhost only
+- [ ] Passwords hashed with argon2
+- [ ] Sessions in `httpOnly` / `Secure` / `SameSite` cookies
+- [ ] Input validation with Zod on every endpoint
+- [ ] Per-user authorization on every resource
+- [ ] Rate limiting on login

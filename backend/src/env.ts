@@ -1,7 +1,7 @@
 import { z } from "zod";
 
-// Validamos las variables de entorno al arrancar:
-// si falta algo o tiene un formato incorrecto, la app no arranca.
+// Environment variables are validated at startup:
+// if anything is missing or malformed, the app refuses to start.
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   PORT: z.coerce.number().int().positive().default(3000),
@@ -11,7 +11,7 @@ const envSchema = z.object({
 const parsed = envSchema.safeParse(process.env);
 
 if (!parsed.success) {
-  console.error("❌ Variables de entorno inválidas:", z.treeifyError(parsed.error));
+  console.error("❌ Invalid environment variables:", z.treeifyError(parsed.error));
   process.exit(1);
 }
 
