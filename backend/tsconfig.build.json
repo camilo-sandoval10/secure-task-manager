@@ -1,0 +1,10 @@
+{
+  // Production build: compiles only src/ into dist/.
+  // tsconfig.json also covers config files such as prisma.config.ts for type checking and linting.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src"]
+}

@@ -6,6 +6,8 @@ const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   PORT: z.coerce.number().int().positive().default(3000),
   FRONTEND_ORIGIN: z.url(),
+  // Only postgres:// or postgresql:// URLs are accepted
+  DATABASE_URL: z.url({ protocol: /^postgres(ql)?$/ }),
 });
 
 const parsed = envSchema.safeParse(process.env);

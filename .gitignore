@@ -1,10 +1,13 @@
-# Dependencias
+# Dependencies
 node_modules/
 
 # Builds
 dist/
 build/
 coverage/
+
+# Prisma Client, regenerated with `npm run db:generate`
+backend/src/generated/
 
 # Environment variables (NEVER commit secrets)
 .env
@@ -15,7 +18,7 @@ coverage/
 *.log
 npm-debug.log*
 
-# Editor / SO
+# Editor / OS
 .vscode/*
 !.vscode/extensions.json
 .idea/

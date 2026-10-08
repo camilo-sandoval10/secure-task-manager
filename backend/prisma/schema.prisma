@@ -1,0 +1,26 @@
+// Prisma schema: describes the database tables.
+// After changing it, run `npm run db:migrate` to create and apply a migration.
+
+generator client {
+  provider            = "prisma-client"
+  // Generated inside src/ so tsc compiles it with the rest of the backend
+  output              = "../src/generated/prisma"
+  moduleFormat        = "esm"
+  // NodeNext requires relative imports to end in .js
+  importFileExtension = "js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  // UUID instead of an auto-increment number: it doesn't reveal how many
+  // users exist and the next id can't be guessed
+  id           String   @id @default(uuid()) @db.Uuid
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+
+  @@map("users")
+}
